@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Archive — Interview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="./main.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="main.html" class="nav-arrow">&#x279E;</a>
+    <div class="nav-links">
+      <a href="main.html">Main</a>
+      <a href="interview.html" class="active">Interview</a>
+      <a href="about.html">About</a>
+      <a href="archive.html">Space Archive</a>
+    </div>
+  </nav>
+  <div class="page-wrapper" id="page"></div>
+  <script>
+    const interviews = [
+      {
+        type:     "intro",                              /* ← 새 레이아웃 */
+        title:    "Interview with\nAtelier Next door",  /* ✏️ 제목 */
+        venue:    "Modern Contemporary gallery",        /* ✏️ 장소 */
+        address:  "1357 Dundas St W, Toronto, ON",      /* ✏️ 주소 */
+        people:   "Interview with Ewan and Nensi Gjona",/* ✏️ 인터뷰이 */
+        image:    "image/Atliernextdoormain.JPG",                     /* ✏️ 이미지 */
+        caption:  "< Space In Atelier >",               /* ✏️ 캡션 */
+        answer:   "Contemporary art, honouring the fundamentals, in the heart of Toronto’s art district.AND1357 has been connecting people to the Dundas West art scene, offering an inviting atmosphere to experience compelling art. By presenting emerging and established artists, both local and international, the gallery has become part of Toronto’s evolving cultural fabric.",
+        quote:    "Because I\u2019m both a designer and an artist, I\u2019ve always thought of design as art, or as an art form in its own right." /* ✏️ 인용구 */
+      },
+      {
+        type:     "qa",                                 /* ← 기존 레이아웃 */
+        question: "Q1. Could you briefly introduce yourself? What made you start planning/designing this exhibition?",
+        answer:   "I’m Nancy, one of the co-founders and the creative director of Atelier Next Door. I’m also an artist with a design background. The project started as a passion project after we met at an art studio and organized an exhibition in an empty space on Dundas West. We really enjoyed organizing it, presenting the work, and connecting with the people who came to see it. After getting a lot of interest from that first exhibition, we decided to continue it long-term, which led to having the gallery permanently.",
+        answerBottom:"I’m Ewan, and that’s really how it began. The gallery has definitely morphed and changed over time – our first idea was not what you see now. We started as five people, and now it’s just the two of us. The space shifted from being partly a studio to becoming more of a contemporary gallery with ongoing programming and exhibitions. I’m also an artist, mostly working in oil, focusing on figurative and landscape perspectives, often with surreal elements. And yeah, I’m really happy to do this interview.",
+        image:    "image/nensiandewanphoto.jpg",
+        caption:  "< Space In Atelier >",
+        bottomRight: ""  
+},
+      
+      {
+        type:     "qa",
+        question: "Q2.Purpose of  Open type exhibition",
+        answer:   "There’s always this feeling that design is too commercial to be considered art, that it always serves a purpose. I wanted to create a space where design – and especially typography – could be exhibited beyond the commercial context, where it doesn’t necessarily have to serve a commercial function and can simply be expressed for its own sake. I find that art doesn’t need permission to be expressive just for the sake of it, but design always feels like it needs to serve a purpose. So I thought it would be great to present design as art – that was really the initial idea behind it. ",
+        answerBottom: "We examine the exhibition from different angles. From one viewpoint, you might see a certain group of works together. From another angle, a different combination appears. We ask ourselves: do these works look strong together from this perspective? It’s not just about one wall working on its own — it’s about whether the whole space works compositionally from multiple viewpoints. ",
+        image:    "image/image3.jpg",
+        caption:  "< Caption Here >",
+        bottomRight: "Q3. What are the most important factors when you begin installing the exhibition?" 
+      },
+      {
+        type:     "qa",
+        question: "Q3. How do you design the audience flow?",
+        answer:   "When it comes to designing audience flow, the movable walls play a really important role. Because the walls can shift and the shape of the space can change, that directly affects how people move through the exhibition. The physical structure of the room naturally guides foot traffic. But flow is also about storytelling. As visitors move through the space, they encounter different themes and ideas, and that sequence becomes part of the narrative. Conceptually, each artwork is saying something, and the way those works are arranged shapes how that story unfolds. Of course, you can’t completely control how people interpret it — different viewers may discover different stories — but you can intentionally design a certain progression.",
+        answerBottom: "It’s helpful to do a very simple mock-up. If you take a picture of the empty wall and then place the artwork images onto it in Photoshop, it’s pretty easy to test out the arrangement. Of course, once you have the physical pieces in person, they don’t always look exactly like the photos. But it’s a good anchor point and a good place to start. We’ve also done installations where we had a full mock-up prepared beforehand, and in those cases the installation process was super quick because we could just follow the plan. But at the same time, we like to sit with the work on the walls for a bit and see how it feels physically in the space.",
+        image:    "image/image4sketch.png",
+        caption:  "< Caption Here >",
+         bottomRight: "Q4. When deciding the placement of artworks, are there any references, tools, or sketches that you usually use?" 
+      }
+    ];
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function renderIntro(data) {
+      const titleLines = data.title.split('\n').map(escapeHtml).join('<br>');
+      const a   = escapeHtml(data.answer);
+      const cap = escapeHtml(data.caption);
+      const imgClass = data.image ? "cb2-image" : "cb2-image empty";
+      const img = data.image
+        ? `<img src="${escapeHtml(data.image)}" alt="" />`
+        : `IMAGE`;
+      return `
+        <div class="cb2">
+          <div class="cb2-sidebar"><span class="arrow-right">&#x279E;</span></div>
+          <div class="cb2-row1">
+            <div class="cb2-title"><p>${titleLines}</p></div>
+            <div class="cb2-info">
+              <p class="cb2-info-text">
+                ${escapeHtml(data.venue)}<br>
+                ${escapeHtml(data.address)}<br>
+                ${escapeHtml(data.people)}
+              </p>
+              <div class="cb2-info-arrow">&#x2193;</div>
+            </div>
+          </div>
+          <div class="cb2-row2">
+            <div>
+              <div class="${imgClass}">${img}</div>
+              <div class="cb2-caption">${cap}</div>
+            </div>
+            <div class="cb2-answer">${a}</div>
+          </div>
+          <div class="cb2-row3">
+            <p class="cb2-quote">&ldquo;${escapeHtml(data.quote)}&rdquo;</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderBlock(data) {
+      if (data.type === "intro") return renderIntro(data);
+      const q   = escapeHtml(data.question);
+      const a   = escapeHtml(data.answer);
+      const cap = escapeHtml(data.caption);
+      const imgFrameClass = data.image ? "image-frame" : "image-frame empty";
+      const img = data.image
+        ? `<img src="${escapeHtml(data.image)}" alt="${q}" />`
+        : `<span class="img-placeholder">IMAGE</span>`;
+      return `
+        <div class="content-box">
+          <div class="sidebar-arrow"><span class="arrow-right">&#x279E;</span></div>
+          <div class="header-question">
+            <p class="question-text">&ldquo;${q}&rdquo;</p>
+          </div>
+          <div class="header-empty"></div>
+          <div class="main-image-col">
+            <div class="${imgFrameClass}">${img}</div>
+            <div class="image-caption">${cap}</div>
+          </div>
+          <div class="main-right-col">
+            <div class="right-top">
+              <div class="right-top-arrow"><span class="arrow-down">&#x2193;</span></div>
+              <div class="right-top-answer">${a}</div>
+            </div>
+           <div class="right-bottom">
+  <p class="question-text">${data.bottomRight ? escapeHtml(data.bottomRight) : '&ldquo;' + q + '&rdquo;'}</p>
+  </div>
+          </div>
+        <div class="footer-answer">${data.answerBottom ? escapeHtml(data.answerBottom) : a}</div>
+          <div class="footer-arrow"><span class="arrow-left">&#x2190;</span></div>
+        </div>
+      `;
+    }
+
+    document.getElementById("page").innerHTML =
+      interviews.map(renderBlock).join("");
+  </script>
+</body>
+</html>
