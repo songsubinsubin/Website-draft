@@ -7,7 +7,7 @@
   --black:  #0a0a0a;
   --white:  #ffffff;
   --border: 1.5px solid #0a0a0a;
-  --font:   'Space Mono', 'Courier New', monospace;
+  --font:   'Futura', 'Courier New', monospace;
 
   /* ✏️ 흰색 박스 너비 조절 — 이 값 하나만 바꾸면 됩니다 */
   --content-width: 1200px;
