@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Archive — Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="./main.css" rel="stylesheet" />
+  <style>
+    .hotspot-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+    }
+    #arrow1 { width:50%; }
+    .hotspot {
+      position: absolute;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff1493;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hotspot-preview {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: white;
+      border: 2px solid #ff1493;
+      padding: 6px;
+    }
+    .hotspot-preview img { width: 100%; display: block; }
+    .hotspot-preview p {
+      font-family: 'Andale Mono', monospace;
+      font-size: 0.7rem;
+      margin: 6px 0 0;
+      color: #111;
+    }
+    .hotspot:hover .hotspot-preview { display: block; }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: white;
+      padding: 16px;
+      max-width: 80vw;
+      max-height: 85vh;
+      position: relative;
+      border: 2px solid #ff1493;
+    }
+    .modal-box img { max-width: 100%; max-height: 75vh; display: block; }
+    .modal-box p {
+      font-family: 'Andale Mono', monospace;
+      font-size: 0.8rem;
+      margin: 10px 0 0;
+      color: #111;
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px; right: 12px;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ff1493;
+      background: none;
+      border: none;
+    }
+    .draggable-arrow { position: absolute; cursor: default; }
+    .edit-mode .draggable-arrow { cursor: move; outline: 1px dashed #ff1493; }
+    .pos-label {
+      display: none;
+      position: absolute;
+      top: -20px;
+      left: 0;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: #ff1493;
+      white-space: nowrap;
+    }
+    .edit-mode .draggable-arrow .pos-label { display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="modal-overlay" id="modal" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img id="modal-img" src="" />
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-arrow">&#x279E;</a>
+    <div class="nav-links">
+      <a href="index.html">Main</a>
+      <a href="archive-landing.html">Interview</a>
+      <a href="about.html">About</a>
+      <a href="archive-landing 2(space archive).html" class="active">Space Archive</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper" style="height:calc(100vh - 36px); overflow:hidden;">
+    <div class="content-box" style="height:100%;">
+      <div class="sidebar-arrow"><span class="arrow-right">&#x279E;</span></div>
+      <div class="header-question" style="grid-column:2/4;border-right:none;">
+        <p class="question-text">Space Archive</p>
+      </div>
+
+      <div style="grid-column:2/4; padding:0; overflow:hidden;">
+        <div class="hotspot-container" id="map-container">
+
+          <img src="image2/Atlier next door.png" style="width:120%; display:block; margin-top:-245px; margin-left:-8%;"/>
+
+          
+          
+
+          <!-- 숫자 버튼들 -->
+          <div class="hotspot" style="left: 770px; bottom: 22%; top: 494px;" onclick="openModal('image2/image 1.jpg', '설명 텍스트 1')">1<div class="hotspot-preview"><img src="image3/atliernextdoorphoto1" /><p>설명 텍스트 1</p></div></div>
+          <div class="hotspot" style="left: 869px; top: 306px; transition: none; cursor: move;" onclick="openModal('image2/image 2.jpg', '설명 텍스트 2')">2<div class="hotspot-preview"><img src="image2/image 2.jpg" /><p>설명 텍스트 2</p></div></div>
+          <div class="hotspot" style="left: 749px; top: 154px; transition: none; cursor: move;" onclick="openModal('image2/image 3.jpg', '설명 텍스트 3')">3<div class="hotspot-preview"><img src="image2/image 3.jpg" /><p>설명 텍스트 3</p></div></div>
+          <div class="hotspot" style="left: 282px; top: 158px; transition: none; cursor: move;" onclick="openModal('image2/image 4.jpg', '설명 텍스트 4')">4<div class="hotspot-preview"><img src="image2/image 4.jpg" /><p>설명 텍스트 4</p></div></div>
+          <div class="hotspot" style="left: 426px; top: 518px; transition: none; cursor: move;" onclick="openModal('image2/image 5.jpg', '설명 텍스트 5')">5<div class="hotspot-preview"><img src="image2/image 5.jpg" /><p>설명 텍스트 5</p></div></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(src, text) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal-text').textContent = text;
+      document.getElementById('modal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    const isEditMode = window.location.search.includes('edit');
+    if (isEditMode) {
+      document.querySelector('.page-wrapper').classList.add('edit-mode');
+
+      document.querySelectorAll('.draggable-arrow').forEach(el => {
+        let isDragging = false;
+        let startX, startY, startLeft, startTop;
+
+        el.addEventListener('mousedown', function(e) {
+          isDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          startLeft = parseInt(el.style.left);
+          startTop = parseInt(el.style.top);
+          e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          const newLeft = startLeft + dx;
+          const newTop = startTop + dy;
+          el.style.left = newLeft + 'px';
+          el.style.top = newTop + 'px';
+          const posLabel = el.querySelector('.pos-label');
+          if (posLabel) posLabel.textContent = `left:${newLeft}px top:${newTop}px`;
+        });
+
+        document.addEventListener('mouseup', function() {
+          if (isDragging) {
+            isDragging = false;
+            console.log(`${el.id}: left:${el.style.left} top:${el.style.top}`);
+
+            if (!document.getElementById('copy-all-btn')) {
+              const allBtn = document.createElement('button');
+              allBtn.id = 'copy-all-btn';
+              allBtn.textContent = '전체 좌표 복사';
+              allBtn.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:9999;background:#ff1493;color:white;border:none;padding:8px 16px;cursor:pointer;font-family:monospace;font-size:12px;';
+              document.body.appendChild(allBtn);
+              allBtn.onclick = () => {
+                const all = [...document.querySelectorAll('.draggable-arrow')]
+                  .map(el => `#${el.id} { left:${el.style.left}; top:${el.style.top}; }`)
+                  .join('\n');
+                navigator.clipboard.writeText(all);
+                allBtn.textContent = '복사됨!';
+                setTimeout(() => allBtn.textContent = '전체 좌표 복사', 1500);
+              };
+            }
+          }
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

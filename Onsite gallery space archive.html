@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Archive — Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="./main.css" rel="stylesheet" />
+  <style>
+    .hotspot-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .hotspot {
+      position: absolute;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff1493;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hotspot-preview {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: white;
+      border: 2px solid #ff1493;
+      padding: 6px;
+    }
+    .hotspot-preview img {
+      width: 100%;
+      display: block;
+    }
+    .hotspot-preview p {
+      font-family: 'Andale Mono', monospace;
+      font-size: 0.7rem;
+      margin: 6px 0 0;
+      color: #111;
+    }
+    .hotspot:hover .hotspot-preview {
+      display: block;
+    }
+    .arrow-svg {
+      pointer-events: none;
+    }
+
+    /* 팝업 오버레이 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: white;
+      padding: 16px;
+      max-width: 80vw;
+      max-height: 85vh;
+      position: relative;
+      border: 2px solid #ff1493;
+    }
+    .modal-box img {
+      max-width: 100%;
+      max-height: 75vh;
+      display: block;
+    }
+    .modal-box p {
+      font-family: 'Andale Mono', monospace;
+      font-size: 0.8rem;
+      margin: 10px 0 0;
+      color: #111;
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px; right: 12px;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ff1493;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 팝업 오버레이 -->
+  <div class="modal-overlay" id="modal" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img id="modal-img" src="" />
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="main.html" class="nav-arrow">&#x279E;</a>
+    <div class="nav-links">
+      <a href="main.html">Main</a>
+      <a href="archive-landing.html">Interview</a>
+      <a href="about.html">About</a>
+      <a href="archive-landing 2(space archive).html" class="active">Space Archive</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="content-box" style="min-height:400px;">
+      <div class="sidebar-arrow"><span class="arrow-right">&#x279E;</span></div>
+      <div class="header-question" style="grid-column:2/4;border-right:none;">
+        <p class="question-text">Space Archive</p>
+      </div>
+
+      <div style="grid-column:2/4; padding:0;">
+        <div class="hotspot-container">
+
+          <!-- 플로어플랜 이미지 -->
+          <img src="image/floor map.jpg" style="width:100%; display:block;" />
+
+          <!-- 화살표 위쪽 2 -->
+          <svg class="arrow-svg" style="position:absolute; left:410px; top:10%; bottom:22%; height:15%;"
+               viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="10,65 10,8 130,8" stroke="#ff1493" stroke-width="9" stroke-linejoin="miter" fill="none"/>
+            <polygon points="127,0 127,16 143,8" fill="#ff1493"/>
+          </svg>
+
+          <!-- 화살표: ㄱ자 (오른쪽 3번) -->
+          <svg class="arrow-svg" style="position:absolute; right:39%; top:30%; width:10%; height:30%;"
+               viewBox="0 0 60 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="5,8 52,8 52,135" stroke="#ff1493" stroke-width="9" stroke-linejoin="miter" fill="none"/>
+            <polygon points="38,133 66,133 52,152" fill="#ff1493"/>
+          </svg>
+
+          <!-- 화살표 3: 세로 위 방향 (하단 입구) -->
+          <svg class="arrow-svg" style="position:absolute; left:35.7%; bottom:0%; width:4%; height:38%;"
+               viewBox="0 0 30 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="15" y1="115" x2="15" y2="18" stroke="#ff1493" stroke-width="9"/>
+            <polygon points="3,20 27,20 15,4" fill="#ff1493"/>
+          </svg>
+
+          <!-- 숫자 1 -->
+          <div class="hotspot" style="left:410px; bottom:22%; top:408px;"
+               onclick="openModal('image2/image 1.jpg', '설명 텍스트 1')">
+            1
+            <div class="hotspot-preview">
+              <img src="image2/image 1.jpg" />
+              <p>설명 텍스트 1</p>
+            </div>
+          </div>
+
+          <!-- 숫자 2 -->
+          <div class="hotspot" style="left:504px; top:164px;"
+               onclick="openModal('image2/image 2.jpg', '설명 텍스트 2')">
+            2
+            <div class="hotspot-preview">
+              <img src="image2/image 2.jpg" />
+              <p>설명 텍스트 2</p>
+            </div>
+          </div>
+
+          <!-- 숫자 3 -->
+          <div class="hotspot" style="left:687px; top:35px;"
+               onclick="openModal('image2/image 3.jpg', '설명 텍스트 3')">
+            3
+            <div class="hotspot-preview">
+              <img src="image2/image 3.jpg" />
+              <p>설명 텍스트 3</p>
+            </div>
+          </div>
+
+          <!-- 숫자 4 -->
+          <div class="hotspot" style="left:607px; top:258px;"
+               onclick="openModal('image2/image 4.jpg', '설명 텍스트 4')">
+            4
+            <div class="hotspot-preview">
+              <img src="image2/image 4.jpg" />
+              <p>설명 텍스트 4</p>
+            </div>
+          </div>
+
+          <!-- 숫자 5 -->
+          <div class="hotspot" style="left:599px; top:422px;"
+               onclick="openModal('image2/image 5.jpg', '설명 텍스트 5')">
+            5
+            <div class="hotspot-preview">
+              <img src="image2/image 5.jpg" />
+              <p>설명 텍스트 5</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(src, text) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal-text').textContent = text;
+      document.getElementById('modal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+    // ESC 키로도 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
