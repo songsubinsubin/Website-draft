@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Archive — Interview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="./main.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="main.html" class="nav-arrow">&#x279E;</a>
+    <div class="nav-links">
+      <a href="main.html">Main</a>
+      <a href="interview.html" class="active">Interview</a>
+      <a href="about.html">About</a>
+      <a href="archive.html">Space Archive</a>
+    </div>
+  </nav>
+  <div class="page-wrapper" id="page"></div>
+  <script>
+    const interviews = [
+      {
+        type:     "intro",                              /* ← 새 레이아웃 */
+        title:    "Interview with curator: \  Gallery 44",  /* ✏️ 제목 */
+        venue:    " Contemporary photography gallery",        /* ✏️ 장소 */
+        address:  "401 Richmond St. W, Suite 120, Toronto, ON, M5V3A8",      /* ✏️ 주소 */
+        people:   "Interview with Sameen Mahboubi",/* ✏️ 인터뷰이 */
+        image:    "image4/2.jpg",                     /* ✏️ 이미지 */
+        caption:  "< Space in gallery 44 >",               /* ✏️ 캡션 */
+        answer:   "Gallery 44 Centre for Contemporary Photography is an artist-run centre committed to supporting diverse approaches to photographic and image-based practices through exhibitions, education programs and facilitating artistic production. ",
+        quote:    "I still get really, really excited about curating and making exhibitions." /* ✏️ 인용구 */
+      },
+      {
+        type:     "qa",                                 /* ← 기존 레이아웃 */
+        question: "Q1. Could you briefly introduce yourself and  tell us how this exhibition came together?",
+        answer: " I'm Samin, I'm a curator here at Gallery 44. And honestly, ideas come from all over. Could be an open call, could be someone you know, could be an artist you've never met but you've been following their work for a while and you just reach out. The show I'm installing right now — that came out of a collaboration with Alexis Nanobush. And she's a curator herself, so it's a bit of a funny dynamic because I'm not the only one with opinions in the room. But I trust her a lot, so we just kind of figure it out together.",
+        answerBottom:" The first thing I'd say is just — don't wait around. My first show was in a garage. There are still garage galleries in Toronto, people working out of apartment rooms, office buildings. If you care about something, just go do it. But if I had to give you three steps: \n First, start with a real idea — something that's actually thought out and a little weird, you know? Then, work with people you trust. Doesn't have to be people you've worked with before, but at least people whose work you've seen in the community and you know it's good. And then it's just about executing — making the time, making sure it works for everyone, and actually seeing it through.",
+        image:    "image4/1.jpg",
+        caption:  "<Annual Fundraising exhibition>",
+        bottomRight: "What are the first three steps you'd focus on when planning an exhibition?"  
+},
+      
+      {
+        type:     "qa",
+        question: "Could you walk us through a typical timeline from planning to opening day?",
+        answer:   "it's long. Like, longer than people expect. We work at a pretty big scale here, so I reached out to Alexis about this show in the fall of 2024, and it opens next Thursday. And I'm already working on things for the end of 2027. 1.5 years: Reach out to artist, start developing the concept. \n\n 2-3 months before: Bring in a designer and a writer for the essay. \n 1 month before: print materla and sent. \n previous show down, wall patched and painted. \n\n 1 week before: install begin ",
+        answerBottom: "When someone proposes an exhibition, I like to see a list of the proposed works from the artists. It doesn’t have to be the exact final works because things can still change, but I want to see which artists you’re thinking about—maybe around 10 to 15 artists if it’s a larger group show. I also prefer having one or two images of each artist’s work embedded directly in a PDF rather than links\n, because links can break or distract people. Along with the images, it’s important to include the artist’s name and where they’re located. Shipping is actually one of the biggest costs in organizing an exhibition, so if all the artists live far away, it might become too expensive to transport the work safely. Sometimes it helps if the artists are local, or if the works are digital or video-based and don’t require shipping. ",
+        image:    "image4/3.jpg",
+        caption:  "",
+        bottomRight: "Q4. If you were a student planning and proposing an exhibition application, how could you make the application compelling?" 
+      },
+      {
+        type:     "qa",
+        question: "Q3. How do you design the audience flow?",
+        answer:   "I don't really use SketchUp or any of those programs. Maybe a printed floor plan, a quick sketch on paper. The main thing for me is I just walk through the space as if I'm someone who just wandered in off the street and has never been to a gallery before. Where does my eye go? What do I want to look at next? And then you adjust from there.If there's a monitor in the room, your eyes are going to go straight to it — we're all drawn to screens, right? So maybe you move it to a rear-facing wall so people have to actively turn away from it to see other work. It's really not that complicated. I think people over-intellectualize it. And I always like the artist to be present during install — it's their show, I want them to feel good about it.",
+        answerBottom: "There was a show last April that had basically 20 collaborators on it — people from multiple cities, all working together on this one thing. And the opening of a show like that, when everyone who put in all that time finally gets to see it come together and it looks good and everyone's happy — that's really what makes it all worth it. The community aspect is honestly what I'm most drawn to with this kind of work.And then last winter we did a public program where we took 40 adults to Fantasy Fair — an indoor kids' amusement park — and rented out a party room. Conversations about art happen so much better outside the gallery. The way you talk about a film over dinner after — you're not just standing there nodding politely. It's just more generative when you're somewhere unexpected.",
+        image:    "image/Onsitegallerysketch.jpg",
+        caption:  "<Lisa's exhibition planning board >",
+         bottomRight: "Q9. Is there any particularly memorable experience from your time at Gallery 44?" 
+      },
+
+      {
+        type:     "qa",
+        question: "After all your experience, what does exhibition-making mean to you?",
+        answer:   "It's a bit of a rollercoaster. There's the stress of collaborators not delivering on time, there's the weight of sitting with artists who are making work about really heavy things — war, grief, trauma — and you have to take all of that in and hold it with them. And then sometimes you open a show and no one comes, and you're just standing there with that feeling. But then there are moments that are just so exciting and celebratory. Because so much of this work is about people, you end up feeling everything all the time. Which sounds exhausting — but that's kind of what I love about it.",
+        answerBottom: "Just go do it. Don't wait for someone to hand you an opportunity. I started in a garage. Treat every assignment at school like it's real work, because it is. One of my professors was a reference for this job, and he talked specifically about an essay I wrote for his class. So you never know.Build real relationships with your professors too — they're artists, they're peers as much as they're teachers. And find people around you that you trust and want to work with, because one person can only do so much. When you've got a solid group of people, you can actually make things happen.",
+        image: "image4/5.jpg",
+        caption:  "< Caption Here >",
+         bottomRight: "Q11. Do you have any advice for students who want to curate or propose their own exhibition?" 
+      }
+    ];
+  
+
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function renderIntro(data) {
+      const titleLines = data.title.split('\n').map(escapeHtml).join('<br>');
+      const a   = escapeHtml(data.answer);
+      const cap = escapeHtml(data.caption);
+      const imgClass = data.image ? "cb2-image" : "cb2-image empty";
+      const img = data.image
+        ? `<img src="${escapeHtml(data.image)}" alt="" />`
+        : `IMAGE`;
+      return `
+        <div class="cb2">
+          <div class="cb2-sidebar"><span class="arrow-right">&#x279E;</span></div>
+          <div class="cb2-row1">
+            <div class="cb2-title"><p>${titleLines}</p></div>
+            <div class="cb2-info">
+              <p class="cb2-info-text">
+                ${escapeHtml(data.venue)}<br>
+                ${escapeHtml(data.address)}<br>
+                ${escapeHtml(data.people)}
+              </p>
+              <div class="cb2-info-arrow">&#x2193;</div>
+            </div>
+          </div>
+          <div class="cb2-row2">
+            <div>
+              <div class="${imgClass}">${img}</div>
+              <div class="cb2-caption">${cap}</div>
+            </div>
+            <div class="cb2-answer">${a}</div>
+          </div>
+          <div class="cb2-row3">
+            <p class="cb2-quote">&ldquo;${escapeHtml(data.quote)}&rdquo;</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderBlock(data) {
+      if (data.type === "intro") return renderIntro(data);
+      const q   = escapeHtml(data.question);
+      const a   = escapeHtml(data.answer);
+      const cap = escapeHtml(data.caption);
+      const imgFrameClass = data.image ? "image-frame" : "image-frame empty";
+      const img = data.image
+        ? `<img src="${escapeHtml(data.image)}" alt="${q}" />`
+        : `<span class="img-placeholder">IMAGE</span>`;
+      return `
+        <div class="content-box">
+          <div class="sidebar-arrow"><span class="arrow-right">&#x279E;</span></div>
+          <div class="header-question">
+            <p class="question-text">&ldquo;${q}&rdquo;</p>
+          </div>
+          <div class="header-empty"></div>
+          <div class="main-image-col">
+            <div class="${imgFrameClass}">${img}</div>
+            <div class="image-caption">${cap}</div>
+          </div>
+          <div class="main-right-col">
+            <div class="right-top">
+              <div class="right-top-arrow"><span class="arrow-down">&#x2193;</span></div>
+              <div class="right-top-answer">${a}</div>
+            </div>
+           <div class="right-bottom">
+  <p class="question-text">${data.bottomRight ? escapeHtml(data.bottomRight) : '&ldquo;' + q + '&rdquo;'}</p>
+  </div>
+          </div>
+       <div class="footer-answer">${data.answerBottom ? escapeHtml(data.answerBottom).replace(/\n/g, '<br>') : a}</div>
+        </div>
+      `;
+    }
+
+    document.getElementById("page").innerHTML =
+      interviews.map(renderBlock).join("");
+  </script>
+</body>
+</html>
