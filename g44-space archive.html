@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Archive — Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="./main.css" rel="stylesheet" />
+  <style>
+    .hotspot-container {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+    .hotspot-container img {
+      width: 100%;
+      display: block;
+    }
+    .hotspot {
+      position: absolute;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ff1493;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+    }
+    .hotspot-preview {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: white;
+      border: 2px solid #ff1493;
+      padding: 6px;
+    }
+    .hotspot-preview img {
+      width: 100%;
+      display: block;
+      transform: none;
+    }
+    .hotspot-preview p {
+      font-family: 'Andale Mono', monospace;
+      font-size: 0.7rem;
+      margin: 6px 0 0;
+      color: #111;
+    }
+    .hotspot:hover .hotspot-preview { display: block; }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: white;
+      padding: 16px;
+      max-width: 80vw;
+      max-height: 85vh;
+      position: relative;
+      border: 2px solid #ff1493;
+    }
+    .modal-box img {
+      max-width: 100%;
+      max-height: 75vh;
+      display: block;
+      transform: none;
+    }
+    .modal-box p {
+      font-family: 'Andale Mono', monospace;
+      font-size: 0.8rem;
+      margin: 10px 0 0;
+      color: #111;
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px; right: 12px;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ff1493;
+      background: none;
+      border: none;
+    }
+    @media (max-width: 700px) {
+      .cb2,
+      .cb2-row1 {
+        grid-template-columns: 1fr;
+      }
+      .hotspot {
+        font-size: 1.2rem;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="modal-overlay" id="modal" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img id="modal-img" src="" />
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-arrow">&#x279E;</a>
+    <div class="nav-links">
+      <a href="index.html">Main</a>
+      <a href="archive-landing.html">Interview</a>
+      <a href="about.html">About</a>
+      <a href="archive-landing 2(space archive).html" class="active">Space Archive</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper" style="height:calc(100vh - 36px); overflow:hidden;">
+    <div class="content-box" style="height:100%;">
+      <div class="sidebar-arrow"><span class="arrow-right">&#x279E;</span></div>
+      <div class="header-question" style="grid-column:2/4; border-right:none;">
+        <p class="question-text">Space Archive</p>
+      </div>
+
+      <div style="grid-column:2/4; padding:0; overflow:hidden;">
+        <div class="hotspot-container" id="map-container">
+
+          <img src="image4/G44-1.jpg" />
+
+          <!-- 1 -->
+          <div class="hotspot" style="left:74%; top:47%;" onclick="openModal('image4/s-1.jpg', 'Entrance')">
+            1
+            <div class="hotspot-preview"><img src="image4/s-1.jpg"/><p>Entrance</p></div>
+          </div>
+
+          <!-- 2 -->
+          <div class="hotspot" style="left:48%; top:36.2%;" onclick="openModal('image4/s-2.jpg', '2')">
+            2
+            <div class="hotspot-preview"><img src="image4/s-2.jpg"/><p>2</p></div>
+          </div>
+
+          <!-- 3 -->
+          <div class="hotspot" style="left:45%; top:20%;" onclick="openModal('image4/s-3.jpg', 'main space')">
+            3
+            <div class="hotspot-preview"><img src="image4/s-3.jpg"/><p>main space</p></div>
+          </div>
+
+          <!-- 4 -->
+          <div class="hotspot" style="left:71%; top:24%;" onclick="openModal('image4/s-4.jpg', '4')">
+            4
+            <div class="hotspot-preview"><img src="image4/s-4.jpg"/><p></p></div>
+          </div>
+
+          <!-- 5 -->
+          <div class="hotspot" style="left:26%; top:17%;" onclick="openModal('image4/s-5.jpg', '5')">
+            5
+            <div class="hotspot-preview"><img src="image4/s-5.jpg"/><p></p></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(src, text) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal-text').textContent = text;
+      document.getElementById('modal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
