@@ -33,11 +33,25 @@
       overflow: hidden;
       text-decoration: none;
       cursor: pointer;
+      transition:all 0.3s;
     }
 
     .archive-section.pink  { background: #FF2D9B; }
     .archive-section.white { background: #ffffff; }
     .archive-section.reverse { flex-direction: row-reverse; }
+
+    .arrow-line {
+      transition:transform 0.5s ease-in-out;
+    }
+
+    .archive-section:hover .arrow-line.left {
+      transform:translateX(-220px)
+    }
+
+
+    .archive-section:hover .arrow-line.right {
+      transform:translateX(220px)
+    }
 
     .section-num {
       font-family: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
