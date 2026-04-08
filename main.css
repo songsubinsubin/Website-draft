@@ -561,3 +561,21 @@ body {
       flex-shrink: 0;
     }
     
+    .hotspot {
+      position: absolute;
+    }
+
+
+   .hotspot {
+  position: absolute;
+  font-size: 0.7rem;
+  font-weight: 10;
+  color: #ff1493;
+  cursor: pointer;
+  width: 10px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
