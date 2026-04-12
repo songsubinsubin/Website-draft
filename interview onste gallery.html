@@ -10,11 +10,11 @@
 <body>
   <nav class="nav">
     <a onclick="history.back()" class="nav-arrow" style="cursor:pointer">
-  <svg width="28" height="14" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="28" y1="7" x2="0" y2="7" stroke="currentColor" stroke-width="2"/>
-    <polyline points="8,1 1,7 8,13" fill="none" stroke="currentColor" stroke-width="2"/>
-  </svg>
-</a>
+      <svg width="28" height="14" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="28" y1="7" x2="0" y2="7" stroke="currentColor" stroke-width="2"/>
+        <polyline points="8,1 1,7 8,13" fill="none" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </a>
     <div class="nav-links">
       <a href="main.html">Main</a>
       <a href="interview.html" class="active">Interview</a>
@@ -22,61 +22,78 @@
       <a href="archive.html">Space Archive</a>
     </div>
   </nav>
+
   <div class="page-wrapper" id="page"></div>
+
+  <!-- 모달: script보다 먼저 와야 함 -->
+  <div id="video-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center;">
+    <div style="position:relative; max-width:860px; width:90%;">
+      <button onclick="closeVideo()" style="position:absolute; top:-36px; right:0; background:none; border:none; color:#fff; font-size:24px; cursor:pointer;">✕</button>
+      <iframe id="modal-video" src="" width="100%" height="480" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;"></iframe>
+    </div>
+  </div>
+
   <script>
     const interviews = [
       {
-        type:     "intro",                              /* ← 새 레이아웃 */
-        title:    "Interview with curator: \ Onsite Gallery",  /* ✏️ 제목 */
-        venue:    "Modern Contemporary gallery",        /* ✏️ 장소 */
-        address:  "199 Richmond St W Ground Floor, Toronto, ON M5V 0H4",      /* ✏️ 주소 */
-        people:   "Interview with Lisa Smith",/* ✏️ 인터뷰이 */
-        image:    "image/Onsitegallerymain.jpg",                     /* ✏️ 이미지 */
-        caption:  "< Space In Onsite gallery >",               /* ✏️ 캡션 */
+        type:     "intro",
+        title:    "Interview with curator: \ Onsite Gallery",
+        venue:    "Modern Contemporary gallery",
+        address:  "199 Richmond St W Ground Floor, Toronto, ON M5V 0H4",
+        people:   "Interview with Lisa Smith",
+        image:    "image/Onsitegallerymain.jpg",
+        caption:  "< Space In Onsite gallery >",
         answer:   "Onsite Gallery is OCAD University's flagship professional gallery, dedicated to presenting contemporary, Indigenous, and public art and design. It serves as a platform for advancing knowledge creation through creative and curatorial practices to stimulate local and international conversations on urgent issues of our time.",
-        quote:    "I still get really, really excited about curating and making exhibitions." /* ✏️ 인용구 */
+        video:   "https://www.youtube.com/embed/n_V6Um4mv8g",
+        quote:    "I still get really, really excited about curating and making exhibitions."
       },
       {
-        type:     "qa",                                 /* ← 기존 레이아웃 */
-        question: "Q1. Could you briefly introduce yourself?",
-        answer: "My name is Lisa Diane Smith, and I’m the senior curator at Onsite Gallery. I’ve been with the gallery for about 20 years, since it first opened.Before that, I worked in artist-run centres. I was the programming director at YYZ Artists’ Outlet, and I also worked at Gallery 44, Centre for Contemporary Photography.So I’ve been working in this field for about 35 years. I was also an OCADU student—in the 90s, I studied sculpture and installation, and then went on to do my master’s in the same field.",
-        answerBottom:"I started curating because there weren’t many women artists being shown at the time, and I wanted to address that.I also found that it was a great way to meet people. For about half of my career, I had both an artistic practice and a curatorial practice. But over time, I shifted more into curating, as my art started to feel more like curatorial work.",
-        image:    "image/Onsiteinterviewphoto.jpg",
-        caption:  "<Interview photo>",
-        bottomRight: "What made you start planning/designing this exhibition?"  
-},
-      
-      {
-        type:     "qa",
-        question: "What criteria do you use when selecting artworks for the exhibition space?",
-        answer:   "I personally tend to be really drawn to work that I feel like has multi-layered concept.When I think about exhibitions, it’s really important to me that audiences can engage with the work even if they don’t have a lot of background knowledge about art or design. Ideally, people should be able to respond to the work immediately. Often that happens through beauty, which I see as a really important tool—even though beauty is subjective. That sense of wonder or awe can come from strong craftsmanship or from how something is made. For example, in a show I curated called Power, an artist named Ekow Nimako created these huge sculptures out of Lego, and people walking into the gallery were immediately amazed and curious about how they were made. At the same time, the work had deeper meanings connected to myths from Ghana and the artist’s background. I’m really drawn to work like that—work that is visually compelling but also layered with ideas. In a space where we have students at different levels and members of the public visiting, it’s important that people don’t feel excluded or confused by art. We want them to feel excited about art and design and feel that the space is accessible to them.",
-        answerBottom: "When someone proposes an exhibition, I like to see a list of the proposed works from the artists. It doesn’t have to be the exact final works because things can still change, but I want to see which artists you’re thinking about—maybe around 10 to 15 artists if it’s a larger group show. I also prefer having one or two images of each artist’s work embedded directly in a PDF rather than links, because links can break or distract people. Along with the images, it’s important to include the artist’s name and where they’re located. Shipping is actually one of the biggest costs in organizing an exhibition, so if all the artists live far away, it might become too expensive to transport the work safely. Sometimes it helps if the artists are local, or if the works are digital or video-based and don’t require shipping. ",
-        image:    "image/Ekow Nimako.png",
-        caption:  "< Ekow Nimako >",
-        bottomRight: "Q4. If you were a student planning and proposing an exhibition application, how could you make the application compelling?" 
+        type:        "qa",
+        question:    "Q1. Could you briefly introduce yourself?",
+        answer:      "My name is Lisa Diane Smith, and I'm the senior curator at Onsite Gallery. I've been with the gallery for about 20 years, since it first opened. Before that, I worked in artist-run centres. I was the programming director at YYZ Artists' Outlet, and I also worked at Gallery 44, Centre for Contemporary Photography. So I've been working in this field for about 35 years. I was also an OCADU student—in the 90s, I studied sculpture and installation, and then went on to do my master's in the same field.",
+        answerBottom:"I started curating because there weren't many women artists being shown at the time, and I wanted to address that. I also found that it was a great way to meet people. For about half of my career, I had both an artistic practice and a curatorial practice. But over time, I shifted more into curating, as my art started to feel more like curatorial work.",
+        image:       "image/Onsiteinterviewphoto.jpg",
+        video: "https://www.youtube.com/embed/xK4Y7Hi8lEc",
+        caption:     "<Interview photo>",
+        bottomRight: "What made you start planning/designing this exhibition?"
       },
       {
-        type:     "qa",
-        question: "Q3. How do you design the audience flow?",
-        answer:   "One important thing I consider is how visitors first experience the space. When people come in from a busy street, they may feel a bit overwhelmed at first, so I avoid placing very small or intimate works right at the entrance. Instead, I try to give them a moment to settle. The student monitors greet them, offer a place to leave their coat, and help them feel comfortable. After that, visitors naturally decide where to go—usually straight ahead or to the right. I’ve even observed this and found that about 70–75% of people go straight and then move through the gallery in a loop.Because some parts of the gallery are tighter and more intimate, those areas work better for smaller or more delicate works that don’t require much viewing distance. At the entrance areas, I prefer works that are easy to read and help people relax into the exhibition. I also think about the “vistas” in the gallery—places that people automatically look toward, such as the back wall or certain areas visible from the door. Those spots are really important, so I try to place something visually compelling there. For example, sometimes I’ll use a graphic or brightly colored work to attract attention, even from people outside the gallery.",
-        answerBottom: "When I plan the layout, I sometimes use SketchUp, but most of the time I actually keep it really simple. I just enlarge the gallery’s floor plan on a photocopier and print small images of the artworks. Then I cut them out and move them around on the plan. It’s very basic, but I like the physicality of it. When it’s a physical plan on the table, everyone can participate—artists can pick up a piece and move it themselves. If everything is on a computer, one person is usually controlling it, so collaboration becomes harder. With the physical plan, it’s much easier for people to work together.The printed artworks aren’t perfectly to scale, so I usually write the dimensions on them as a reminder. That way I can still calculate whether the works will actually fit on a wall or in a certain area. I’m always thinking about the length of the wall and the space needed for each piece.",
-        image:    "image/Onsitegallerysketch.jpg",
-        caption:  "<Lisa's exhibition planning board >",
-         bottomRight: "When deciding the placement of artworks, are there any references, tools, or sketches that you usually use?" 
+        type:        "qa",
+        question:    "What criteria do you use when selecting artworks for the exhibition space?",
+        answer:      "I personally tend to be really drawn to work that I feel like has multi-layered concept. When I think about exhibitions, it's really important to me that audiences can engage with the work even if they don't have a lot of background knowledge about art or design. Ideally, people should be able to respond to the work immediately. Often that happens through beauty, which I see as a really important tool—even though beauty is subjective. That sense of wonder or awe can come from strong craftsmanship or from how something is made. For example, in a show I curated called Power, an artist named Ekow Nimako created these huge sculptures out of Lego, and people walking into the gallery were immediately amazed and curious about how they were made. At the same time, the work had deeper meanings connected to myths from Ghana and the artist's background. I'm really drawn to work like that—work that is visually compelling but also layered with ideas. In a space where we have students at different levels and members of the public visiting, it's important that people don't feel excluded or confused by art. We want them to feel excited about art and design and feel that the space is accessible to them.",
+        answerBottom:"When someone proposes an exhibition, I like to see a list of the proposed works from the artists. It doesn't have to be the exact final works because things can still change, but I want to see which artists you're thinking about—maybe around 10 to 15 artists if it's a larger group show. I also prefer having one or two images of each artist's work embedded directly in a PDF rather than links, because links can break or distract people. Along with the images, it's important to include the artist's name and where they're located. Shipping is actually one of the biggest costs in organizing an exhibition, so if all the artists live far away, it might become too expensive to transport the work safely. Sometimes it helps if the artists are local, or if the works are digital or video-based and don't require shipping.",
+        image:       "image/Ekow Nimako.png",
+        caption:     "< Ekow Nimako >",
+        bottomRight: "Q4. If you were a student planning and proposing an exhibition application, how could you make the application compelling?"
       },
-
       {
-        type:     "qa",
-        question: "what is the most three important thing during the installation process?",
-        answer:   "One thing I think is really important is giving myself extra time with the actual artworks in the space. I print them in color and live with them at home first, but when I get to the gallery, I like to unwrap everything and play with placement. Usually I end up changing three or four things. Colors and relationships look different in real life, so it’s worth experimenting.I also try to give artists and students time to work on-site, especially for installations that can’t be made in a studio. And it’s important to not be embarrassed about moving things around—even after showing the plan to the director, I’ll ask for an extra day if I need it.So basically, when I’m installing, I layout framed works against walls, sculptures half in crates so they’re easy to move, and then I just experiment. Sometimes I discover really great arrangements that I didn’t see on paper, and then I figure out how the other pieces need to adjust. It’s all about being with the work physically and being willing to change things.",
-        answerBottom: "When I plan the layout, I sometimes use SketchUp, but most of the time I actually keep it really simple. I just enlarge the gallery’s floor plan on a photocopier and print small images of the artworks. Then I cut them out and move them around on the plan. It’s very basic, but I like the physicality of it. When it’s a physical plan on the table, everyone can participate—artists can pick up a piece and move it themselves. If everything is on a computer, one person is usually controlling it, so collaboration becomes harder. With the physical plan, it’s much easier for people to work together.The printed artworks aren’t perfectly to scale, so I usually write the dimensions on them as a reminder. That way I can still calculate whether the works will actually fit on a wall or in a certain area. I’m always thinking about the length of the wall and the space needed for each piece.",image:    "image4sketch.png",
-        image: "image/space1.jpg",
-        caption:  "< Caption Here >",
-         bottomRight: "When deciding the placement of artworks, are there any references, tools, or sketches that you usually use?" 
+        type:        "qa",
+        question:    "Q3. How do you design the audience flow?",
+        answer:      "One important thing I consider is how visitors first experience the space. When people come in from a busy street, they may feel a bit overwhelmed at first, so I avoid placing very small or intimate works right at the entrance. Instead, I try to give them a moment to settle. The student monitors greet them, offer a place to leave their coat, and help them feel comfortable. After that, visitors naturally decide where to go—usually straight ahead or to the right. I've even observed this and found that about 70–75% of people go straight and then move through the gallery in a loop. Because some parts of the gallery are tighter and more intimate, those areas work better for smaller or more delicate works that don't require much viewing distance. At the entrance areas, I prefer works that are easy to read and help people relax into the exhibition. I also think about the vistas in the gallery—places that people automatically look toward, such as the back wall or certain areas visible from the door. Those spots are really important, so I try to place something visually compelling there.",
+        answerBottom:"When I plan the layout, I sometimes use SketchUp, but most of the time I actually keep it really simple. I just enlarge the gallery's floor plan on a photocopier and print small images of the artworks. Then I cut them out and move them around on the plan. It's very basic, but I like the physicality of it. When it's a physical plan on the table, everyone can participate—artists can pick up a piece and move it themselves. If everything is on a computer, one person is usually controlling it, so collaboration becomes harder. With the physical plan, it's much easier for people to work together.",
+        image:       "image/Onsitegallerysketch.jpg",
+        caption:     "<Lisa's exhibition planning board>",
+        bottomRight: "When deciding the placement of artworks, are there any references, tools, or sketches that you usually use?"
+      },
+      {
+        type:        "qa",
+        question:    "What are the most three important things during the installation process?",
+        answer:      "One thing I think is really important is giving myself extra time with the actual artworks in the space. I print them in color and live with them at home first, but when I get to the gallery, I like to unwrap everything and play with placement. Usually I end up changing three or four things. Colors and relationships look different in real life, so it's worth experimenting. I also try to give artists and students time to work on-site, especially for installations that can't be made in a studio. And it's important to not be embarrassed about moving things around—even after showing the plan to the director, I'll ask for an extra day if I need it.",
+        answerBottom:"When I plan the layout, I sometimes use SketchUp, but most of the time I actually keep it really simple. I just enlarge the gallery's floor plan on a photocopier and print small images of the artworks. Then I cut them out and move them around on the plan. It's very basic, but I like the physicality of it.",
+        image:       "image/space1.jpg",
+        caption:     "< Caption Here >",
+        bottomRight: "When deciding the placement of artworks, are there any references, tools, or sketches that you usually use?"
+      },
+      {
+        type:        "qa",
+        question:    "What does exhibition mean to you, after years of experience?",
+        answer:      "I still get really, really, really excited. Yeah, I mean, I still get really, really excited about curating and making exhibitions. I like trying new things—like I’m working on a show that won’t happen until 2027, which is a collaboration with a media lab in a mud hut in the highlands of Kenya. What’s really exciting is that a lot of the work will happen through live online exchanges—like Maasai musicians in Kenya creating a musical score with a solo performer in Toronto. I’ve never done anything like that before. I’m really interested in how exchange and collaboration between very different cultural and geographical contexts can become the artwork itself. There’s visual work too—a Toronto-based artist has made a feature-length movie—but the real fascination for me is seeing how these communities come together, valuing different worldviews and knowledge systems, and making something incredible. Even after 20 years in the field, I still track what excites me every day. I take note of ideas or experiences that inspire me. Sure, some administrative work can be repetitive, but I feel lucky to have a job where I can explore what keeps me energized. At my age, early 60s, I’m excited about mentoring the next generation—training new curators and staff, sharing what I’ve learned about collaboration and experimentation. I also think a lot about different exhibition spaces—there’s the site in Kenya, the site here at Onsite, and the largest “space,” which is live online. How do I present works across all these spaces in a way that makes sense? I’ve traveled, stayed in the mud huts, met artists and media makers, and everything I do still comes from what excites me. I’m also thinking about how to pass on the less obvious, behind-the-scenes lessons—like prioritizing artists, being transparent, and the other things I’ve learned—so someone else can make it theirs but also benefit from my experience.",
+        answerBottom:"xFor students or future curators, I’d say people often know a lot but don’t give themselves credit. Pay attention to what excites you and makes you happy. Be transparent, be honest, and don’t hold things that make you nervous entirely by yourself. Be willing to make mistakes. That’s a huge part of learning. Sometimes I’ve done shows that were kind of “crazy” or low-budget, but I just kept pushing. For example, I worked to bring in Marian Bantjes, a Toronto-based graphic designer with an international career, for a solo show. It was challenging, but I kept explaining why this show was important for the gallery, the students, and the community. It ended up being very sculptural, conceptual, and emotional—exactly what was needed. So, always ask yourself: why am I doing this show? Sometimes it’s for the conversation it brings to the community, sometimes to give emerging artists exposure alongside big-name artists. It’s about being thoughtful, transparent, and honest. Follow what excites you in your gut, and know that it’s not selfish—it’s responding to what’s out there in the world that inspires you. Also, keep up with contemporary conversations in art—read, explore, and stay aware. Curating is about caring for art and artists, but also participating in a larger, ongoing philosophical conversation",
+        image:       "image/space1.jpg",
+        caption:     "< Caption Here >",
+        bottomRight: "Do you have any advices for future curators or students making an exhibition?"
       }
     ];
-  
-
 
     function escapeHtml(str) {
       return str
@@ -93,11 +110,11 @@
       const cap = escapeHtml(data.caption);
       const imgClass = data.image ? "cb2-image" : "cb2-image empty";
       const img = data.image
-        ? `<img src="${escapeHtml(data.image)}" alt="" />`
+        ? `<img src="${escapeHtml(data.image)}" alt="" ${data.video ? `style="cursor:pointer;" onclick="openVideo('${data.video}')"` : ''} />`
         : `IMAGE`;
       return `
         <div class="cb2">
-         <div class="cb2-sidebar"><span class="arrow-right" onclick="goBack()">&#x279E;</span></div>
+          <div class="cb2-sidebar"><span class="arrow-right" onclick="goBack()">&#x279E;</span></div>
           <div class="cb2-row1">
             <div class="cb2-title"><p>${titleLines}</p></div>
             <div class="cb2-info">
@@ -117,7 +134,7 @@
             <div class="cb2-answer">${a}</div>
           </div>
           <div class="cb2-row3">
-            <p class="cb2-quote">&ldquo;${escapeHtml(data.quote)}&rdquo;</p>
+            <p class="cb2-quote" ${data.video ? `style="cursor:pointer;" onclick="openVideo('${data.video}')"` : ''}>&ldquo;${escapeHtml(data.quote)}&rdquo;</p>
           </div>
         </div>
       `;
@@ -130,7 +147,7 @@
       const cap = escapeHtml(data.caption);
       const imgFrameClass = data.image ? "image-frame" : "image-frame empty";
       const img = data.image
-        ? `<img src="${escapeHtml(data.image)}" alt="${q}" />`
+        ? `<img src="${escapeHtml(data.image)}" alt="${q}" ${data.video ? `style="cursor:pointer;" onclick="openVideo('${data.video}')"` : ''} />`
         : `<span class="img-placeholder">IMAGE</span>`;
       return `
         <div class="content-box">
@@ -148,11 +165,11 @@
               <div class="right-top-arrow"><span class="arrow-down">&#x2193;</span></div>
               <div class="right-top-answer">${a}</div>
             </div>
-           <div class="right-bottom">
-  <p class="question-text">${data.bottomRight ? escapeHtml(data.bottomRight) : '&ldquo;' + q + '&rdquo;'}</p>
-  </div>
+            <div class="right-bottom">
+              <p class="question-text">${data.bottomRight ? escapeHtml(data.bottomRight) : '&ldquo;' + q + '&rdquo;'}</p>
+            </div>
           </div>
-        <div class="footer-answer">${data.answerBottom ? escapeHtml(data.answerBottom) : a}</div>
+          <div class="footer-answer">${data.answerBottom ? escapeHtml(data.answerBottom) : a}</div>
           <div class="footer-arrow"><span class="arrow-left">&#x2190;</span></div>
         </div>
       `;
@@ -160,6 +177,23 @@
 
     document.getElementById("page").innerHTML =
       interviews.map(renderBlock).join("");
+
+    function openVideo(src) {
+  const modal = document.getElementById('video-modal');
+  document.getElementById('modal-video').src = src;
+  modal.style.display = 'flex';
+}
+function closeVideo() {
+  const modal = document.getElementById('video-modal');
+  modal.style.display = 'none';
+  document.getElementById('modal-video').src = ''; // 영상 멈춤
+}
+
+   
+
+    document.getElementById('video-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeVideo();
+    });
   </script>
   <script src="script.js"></script>
 </body>

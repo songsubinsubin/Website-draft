@@ -35,9 +35,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: var(--border);
+url(http://127.0.0.1:5501/image/mainpageimage.png)  border-right: var(--border);
   font-size: 18px;
-  color: var(--pink);
+  color: #FF2D9B;
   flex-shrink: 0;
   cursor: pointer;
   text-decoration: none;
@@ -52,9 +52,19 @@ body {
 .nav-links a {
   text-decoration: none;
   color: var(--black);
-  opacity: 0.55;
+  opacity:1;
+  
 }
 .nav-links a.active { opacity: 1; }
+.nav-links a:hover {
+  color: var(--pink);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color:   #FF2D9B; /* 핑크색 hex 값으로 교체 */
+  transition: color 0.2s;
+}
 
 /* ════════════════════════════
    OUTER WRAPPER  (pink gutter)
@@ -212,6 +222,11 @@ body {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
+}
+
+.cb2-quote:hover {
+color: #FF2D9B;
+cursor: pointer;
 }
 .sidebar-arrow {
   grid-column: 1;
@@ -579,3 +594,80 @@ body {
   justify-content: center;
   transform: translate(-50%, -50%);
 }
+
+.gallery-link {
+  color: inherit;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.gallery-link:hover {
+  color: #ff1493; /* 네 메인 핑크색으로 교체해줘 */
+}
+
+
+.image-frame img {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: block;
+
+}
+
+
+.image-frame:hover {
+overflow: visible;
+}
+
+.image-frame img:hover {
+transform: scale(1.2);
+outline: 2px solid #ff1493;
+position: relative;
+z-index:10;
+}
+
+    
+
+ @media (max-width: 900px) {
+  .archive-section {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: clamp(18px, 3.5vw, 30pt);
+    word-break: break-word;
+  }
+
+  .section-num {
+    font-size: clamp(20px, 8vw, 88pt);
+    width: auto;
+  }
+
+  .section-gallery {
+    font-size: clamp(8px, 2.5vw, 18px);
+  }
+}
+     
+      
+.btn-archive {
+      top:auto;
+      bottom: 360px;
+      left:38px;
+     }
+     .btn-interview {
+    top: auto;
+    bottom: 130px;
+    right: 60px;
+  }
+
+  .arrow-label,
+  .arrow-num { 
+    font-size: 13pt; 
+  }
+
+  .arrow-svg {
+    width: clamp(120px, 40vw, 220px);
+  }
+}
+    
+
+
