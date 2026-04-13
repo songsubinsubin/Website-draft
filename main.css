@@ -734,29 +734,7 @@ z-index:10;
   .section-gallery {
     font-size: clamp(8px, 2.5vw, 18px);
   }
-}
+
      
-      
-.btn-archive {
-      top:auto;
-      bottom: 360px;
-      left:38px;
-     }
-     .btn-interview {
-    top: auto;
-    bottom: 130px;
-    right: 60px;
-  }
-
-  .arrow-label,
-  .arrow-num { 
-    font-size: 13pt; 
-  }
-
-  .arrow-svg {
-    width: clamp(120px, 40vw, 220px);
-  }
-}
-    
-
+ 
 
