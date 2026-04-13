@@ -18,21 +18,20 @@
     </a>
     <div class="nav-links">
       <a href="main.html">Main</a>
-      <a href="interview-atlier next door.html" class="active">Interview</a>
+      <a href="landingpage-interview.html" class="active">Interview</a>
       <a href="about.html">About</a>
-      <a href="archive-landing 2(space archive).html">Space Archive</a>
+      <a href="landingpage-spacearchive.html">Space Archive</a>
     </div>
   </nav>
 
   <div class="page-wrapper" id="page"></div>
 
-  <!-- 모달 -->
+  
+  <!-- 모달: script보다 먼저 와야 함 -->
   <div id="video-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center;">
     <div style="position:relative; max-width:860px; width:90%;">
       <button onclick="closeVideo()" style="position:absolute; top:-36px; right:0; background:none; border:none; color:#fff; font-size:24px; cursor:pointer;">✕</button>
-      <video id="modal-video" controls style="width:100%; display:block;">
-        <source id="modal-source" src="" type="video/mp4" />
-      </video>
+      <iframe id="modal-video" src="" width="100%" height="480" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;"></iframe>
     </div>
   </div>
 
@@ -55,6 +54,7 @@
         answer:      "I'm Nancy, one of the co-founders and the creative director of Atelier Next Door. I'm also an artist with a design background. The project started as a passion project after we met at an art studio and organized an exhibition in an empty space on Dundas West. We really enjoyed organizing it, presenting the work, and connecting with the people who came to see it. After getting a lot of interest from that first exhibition, we decided to continue it long-term, which led to having the gallery permanently.",
         answerBottom:"I'm Ewan, and that's really how it began. The gallery has definitely morphed and changed over time – our first idea was not what you see now. We started as five people, and now it's just the two of us. The space shifted from being partly a studio to becoming more of a contemporary gallery with ongoing programming and exhibitions. I'm also an artist, mostly working in oil, focusing on figurative and landscape perspectives, often with surreal elements. And yeah, I'm really happy to do this interview.",
         image:       "image/nensiandewanphoto.jpg",
+        video: "https://www.youtube.com/embed/1o47Arx7kDI",
         caption:     "< Space In Atelier >",
         bottomRight: ""
       },
@@ -64,6 +64,8 @@
         answer:      "There's always this feeling that design is too commercial to be considered art, that it always serves a purpose. I wanted to create a space where design – and especially typography – could be exhibited beyond the commercial context, where it doesn't necessarily have to serve a commercial function and can simply be expressed for its own sake. I find that art doesn't need permission to be expressive just for the sake of it, but design always feels like it needs to serve a purpose. So I thought it would be great to present design as art – that was really the initial idea behind it.",
         answerBottom:"We examine the exhibition from different angles. From one viewpoint, you might see a certain group of works together. From another angle, a different combination appears. We ask ourselves: do these works look strong together from this perspective? It's not just about one wall working on its own — it's about whether the whole space works compositionally from multiple viewpoints.",
         image:       "image/image3.jpg",
+        video: "https://www.youtube.com/embed/djbdWIlRHkg",
+       
         caption:     "< Caption Here >",
         bottomRight: "Q3. What are the most important factors when you begin installing the exhibition?"
       },
@@ -73,6 +75,8 @@
         answer:      "When it comes to designing audience flow, the movable walls play a really important role. Because the walls can shift and the shape of the space can change, that directly affects how people move through the exhibition. The physical structure of the room naturally guides foot traffic. But flow is also about storytelling. As visitors move through the space, they encounter different themes and ideas, and that sequence becomes part of the narrative. Conceptually, each artwork is saying something, and the way those works are arranged shapes how that story unfolds. Of course, you can't completely control how people interpret it — different viewers may discover different stories — but you can intentionally design a certain progression.",
         answerBottom:"It's helpful to do a very simple mock-up. If you take a picture of the empty wall and then place the artwork images onto it in Photoshop, it's pretty easy to test out the arrangement. Of course, once you have the physical pieces in person, they don't always look exactly like the photos. But it's a good anchor point and a good place to start. We've also done installations where we had a full mock-up prepared beforehand, and in those cases the installation process was super quick because we could just follow the plan. But at the same time, we like to sit with the work on the walls for a bit and see how it feels physically in the space.",
         image:       "image/image4sketch.png",
+        video: "https://www.youtube.com/embed/rLxjzjb2etA",
+        
         caption:     "< Caption Here >",
         bottomRight: "Q4. When deciding the placement of artworks, are there any references, tools, or sketches that you usually use?"
       }
@@ -161,18 +165,19 @@
     document.getElementById("page").innerHTML =
       interviews.map(renderBlock).join("");
 
+   
     function openVideo(src) {
-      const modal = document.getElementById('video-modal');
-      document.getElementById('modal-source').src = src;
-      document.getElementById('modal-video').load();
-      modal.style.display = 'flex';
-    }
+  const modal = document.getElementById('video-modal');
+  document.getElementById('modal-video').src = src;
+  modal.style.display = 'flex';
+}
+function closeVideo() {
+  const modal = document.getElementById('video-modal');
+  modal.style.display = 'none';
+  document.getElementById('modal-video').src = ''; // 영상 멈춤
+}
 
-    function closeVideo() {
-      const modal = document.getElementById('video-modal');
-      modal.style.display = 'none';
-      document.getElementById('modal-video').pause();
-    }
+   
 
     document.getElementById('video-modal').addEventListener('click', function(e) {
       if (e.target === this) closeVideo();
