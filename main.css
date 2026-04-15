@@ -75,6 +75,7 @@ url(http://127.0.0.1:5501/image/mainpageimage.png)  border-right: var(--border);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  border:none;
   gap: 12px; /* 블록 사이 핑크 간격 */
 }
 
@@ -216,6 +217,8 @@ url(http://127.0.0.1:5501/image/mainpageimage.png)  border-right: var(--border);
   border: var(--border);
   border-top: none;
   border-left: none;
+  border:none;
+
 }
 .cb2-quote {
   font-size: 36px;
@@ -290,7 +293,10 @@ cursor: pointer;
   width: 100%;
   height: auto;
   object-fit: cover;
+  cursor: url('image4/play.png');
 }
+
+
 /* placeholder shown when no image is set */
 .image-frame.empty {
   min-height: 260px;
@@ -578,12 +584,13 @@ cursor: pointer;
     
     .hotspot {
       position: absolute;
+      
     }
 
 
    .hotspot {
   position: absolute;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 10;
   color: #ff1493;
   cursor: pointer;

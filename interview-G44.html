@@ -60,8 +60,8 @@
         question: "Q3. How do you design the audience flow?",
         answer:   "I don't really use SketchUp or any of those programs. Maybe a printed floor plan, a quick sketch on paper. The main thing for me is I just walk through the space as if I'm someone who just wandered in off the street and has never been to a gallery before. Where does my eye go? What do I want to look at next? And then you adjust from there.If there's a monitor in the room, your eyes are going to go straight to it — we're all drawn to screens, right? So maybe you move it to a rear-facing wall so people have to actively turn away from it to see other work. It's really not that complicated. I think people over-intellectualize it. And I always like the artist to be present during install — it's their show, I want them to feel good about it.",
         answerBottom: "There was a show last April that had basically 20 collaborators on it — people from multiple cities, all working together on this one thing. And the opening of a show like that, when everyone who put in all that time finally gets to see it come together and it looks good and everyone's happy — that's really what makes it all worth it. The community aspect is honestly what I'm most drawn to with this kind of work.And then last winter we did a public program where we took 40 adults to Fantasy Fair — an indoor kids' amusement park — and rented out a party room. Conversations about art happen so much better outside the gallery. The way you talk about a film over dinner after — you're not just standing there nodding politely. It's just more generative when you're somewhere unexpected.",
-        image:    "image/Onsitegallerysketch.jpg",
-        caption:  "<Lisa's exhibition planning board >",
+        image:    "image4/g44floorplan3.jpg", transform: "scale(1.6)",
+        caption:  "<Gallery 44 floor plan >",
          bottomRight: "Q9. Is there any particularly memorable experience from your time at Gallery 44?" 
       },
 
@@ -71,7 +71,7 @@
         answer:   "It's a bit of a rollercoaster. There's the stress of collaborators not delivering on time, there's the weight of sitting with artists who are making work about really heavy things — war, grief, trauma — and you have to take all of that in and hold it with them. And then sometimes you open a show and no one comes, and you're just standing there with that feeling. But then there are moments that are just so exciting and celebratory. Because so much of this work is about people, you end up feeling everything all the time. Which sounds exhausting — but that's kind of what I love about it.",
         answerBottom: "Just go do it. Don't wait for someone to hand you an opportunity. I started in a garage. Treat every assignment at school like it's real work, because it is. One of my professors was a reference for this job, and he talked specifically about an essay I wrote for his class. So you never know.Build real relationships with your professors too — they're artists, they're peers as much as they're teachers. And find people around you that you trust and want to work with, because one person can only do so much. When you've got a solid group of people, you can actually make things happen.",
         image: "image4/5.jpg",
-        caption:  "< Caption Here >",
+        caption:  "",
          bottomRight: "Q11. Do you have any advice for students who want to curate or propose their own exhibition?" 
       }
     ];
@@ -130,8 +130,8 @@
       const cap = escapeHtml(data.caption);
       const imgFrameClass = data.image ? "image-frame" : "image-frame empty";
       const img = data.image
-        ? `<img src="${escapeHtml(data.image)}" alt="${q}" />`
-        : `<span class="img-placeholder">IMAGE</span>`;
+      ? `<img src="${escapeHtml(data.image)}" alt="${q}" style="${data.transform ? 'transform:' + data.transform + '; transform-origin: center;' : ''}" />`
+      : `<span class="img-placeholder">IMAGE</span>`;
       return `
         <div class="content-box">
           <div class="sidebar-arrow"><span class="arrow-right">&#x279E;</span></div>

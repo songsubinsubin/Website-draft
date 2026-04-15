@@ -17,9 +17,9 @@
     </a>
     <div class="nav-links">
       <a href="main.html">Main</a>
-      <a href="interview.html" class="active">Interview</a>
+      <a href="landingpage-interview.html" class="active">Interview</a>
       <a href="about.html">About</a>
-      <a href="archive.html">Space Archive</a>
+      <a href="landingpage-spacearchive.html">Space Archive</a>
     </div>
   </nav>
 
@@ -52,7 +52,7 @@
         question:    "Q1. Could you briefly introduce yourself?",
         answer:      "My name is Lisa Diane Smith, and I'm the senior curator at Onsite Gallery. I've been with the gallery for about 20 years, since it first opened. Before that, I worked in artist-run centres. I was the programming director at YYZ Artists' Outlet, and I also worked at Gallery 44, Centre for Contemporary Photography. So I've been working in this field for about 35 years. I was also an OCADU student—in the 90s, I studied sculpture and installation, and then went on to do my master's in the same field.",
         answerBottom:"I started curating because there weren't many women artists being shown at the time, and I wanted to address that. I also found that it was a great way to meet people. For about half of my career, I had both an artistic practice and a curatorial practice. But over time, I shifted more into curating, as my art started to feel more like curatorial work.",
-        image:       "image/Onsiteinterviewphoto.jpg",
+        image:       "image/Onsiteinterviewphoto.png",
         video: "https://www.youtube.com/embed/xK4Y7Hi8lEc",
         caption:     "<Interview photo>",
         bottomRight: "What made you start planning/designing this exhibition?"
@@ -91,10 +91,12 @@
         question:    "What does exhibition mean to you, after years of experience?",
         answer:      "I still get really, really, really excited. Yeah, I mean, I still get really, really excited about curating and making exhibitions. I like trying new things—like I’m working on a show that won’t happen until 2027, which is a collaboration with a media lab in a mud hut in the highlands of Kenya. What’s really exciting is that a lot of the work will happen through live online exchanges—like Maasai musicians in Kenya creating a musical score with a solo performer in Toronto. I’ve never done anything like that before. I’m really interested in how exchange and collaboration between very different cultural and geographical contexts can become the artwork itself. There’s visual work too—a Toronto-based artist has made a feature-length movie—but the real fascination for me is seeing how these communities come together, valuing different worldviews and knowledge systems, and making something incredible. Even after 20 years in the field, I still track what excites me every day. I take note of ideas or experiences that inspire me. Sure, some administrative work can be repetitive, but I feel lucky to have a job where I can explore what keeps me energized. At my age, early 60s, I’m excited about mentoring the next generation—training new curators and staff, sharing what I’ve learned about collaboration and experimentation. I also think a lot about different exhibition spaces—there’s the site in Kenya, the site here at Onsite, and the largest “space,” which is live online. How do I present works across all these spaces in a way that makes sense? I’ve traveled, stayed in the mud huts, met artists and media makers, and everything I do still comes from what excites me. I’m also thinking about how to pass on the less obvious, behind-the-scenes lessons—like prioritizing artists, being transparent, and the other things I’ve learned—so someone else can make it theirs but also benefit from my experience.",
         answerBottom:" For students or future curators, I’d say people often know a lot but don’t give themselves credit. Pay attention to what excites you and makes you happy. Be transparent, be honest, and don’t hold things that make you nervous entirely by yourself. Be willing to make mistakes. That’s a huge part of learning. Sometimes I’ve done shows that were kind of “crazy” or low-budget, but I just kept pushing. For example, I worked to bring in Marian Bantjes, a Toronto-based graphic designer with an international career, for a solo show. It was challenging, but I kept explaining why this show was important for the gallery, the students, and the community. It ended up being very sculptural, conceptual, and emotional—exactly what was needed. So, always ask yourself: why am I doing this show? Sometimes it’s for the conversation it brings to the community, sometimes to give emerging artists exposure alongside big-name artists. It’s about being thoughtful, transparent, and honest. Follow what excites you in your gut, and know that it’s not selfish—it’s responding to what’s out there in the world that inspires you. Also, keep up with contemporary conversations in art—read, explore, and stay aware. Curating is about caring for art and artists, but also participating in a larger, ongoing philosophical conversation.",
-        image:       "image/space1.jpg",
+        image:       "image2/image 2.jpg",
         video: "https://www.youtube.com/embed/n_V6Um4mv8g",
         caption:     "< Caption Here >",
-        bottomRight: "Do you have any advices for future curators or students who are making exhibition?"
+        bottomRight: "Do you have any advices for future curators or students who are making exhibition?", 
+        footerImage: "image4/final video picture.jpg",
+        footerVideo: "https://www.youtube.com/embed/EZvFIfCgDgs",
       },
 
        
@@ -148,40 +150,50 @@
       `;
     }
 
-    function renderBlock(data) {
-      if (data.type === "intro") return renderIntro(data);
-      const q   = escapeHtml(data.question);
-      const a   = escapeHtml(data.answer);
-      const cap = escapeHtml(data.caption);
-      const imgFrameClass = data.image ? "image-frame" : "image-frame empty";
-      const img = data.image
-        ? `<img src="${escapeHtml(data.image)}" alt="${q}" ${data.video ? `style="cursor:pointer;" onclick="openVideo('${data.video}')"` : ''} />`
-        : `<span class="img-placeholder">IMAGE</span>`;
-      return `
-        <div class="content-box">
-          <div class="sidebar-arrow"><span class="arrow-right" onclick="goBack()">&#x279E;</span></div>
-          <div class="header-question">
-            <p class="question-text">&ldquo;${q}&rdquo;</p>
-          </div>
-          <div class="header-empty"></div>
-          <div class="main-image-col">
-            <div class="${imgFrameClass}">${img}</div>
-            <div class="image-caption">${cap}</div>
-          </div>
-          <div class="main-right-col">
-            <div class="right-top">
-              <div class="right-top-arrow"><span class="arrow-down">&#x2193;</span></div>
-              <div class="right-top-answer">${a}</div>
-            </div>
-            <div class="right-bottom">
-              <p class="question-text">${data.bottomRight ? escapeHtml(data.bottomRight) : '&ldquo;' + q + '&rdquo;'}</p>
-            </div>
-          </div>
-          <div class="footer-answer">${data.answerBottom ? escapeHtml(data.answerBottom) : a}</div>
-          <div class="footer-arrow"><span class="arrow-left">&#x2190;</span></div>
+   function renderBlock(data) {
+  if (data.type === "intro") return renderIntro(data);
+  const q   = escapeHtml(data.question);
+  const a   = escapeHtml(data.answer);
+  const cap = escapeHtml(data.caption);
+  const imgFrameClass = data.image ? "image-frame" : "image-frame empty";
+  const img = data.image
+    ? `<img src="${escapeHtml(data.image)}" alt="${q}" ${data.video ? `style="cursor:pointer;" onclick="openVideo('${data.video}')"` : ''} />`
+    : `<span class="img-placeholder">IMAGE</span>`;
+  return `
+    <div class="content-box">
+      <div class="sidebar-arrow"><span class="arrow-right" onclick="goBack()">&#x279E;</span></div>
+      <div class="header-question">
+        <p class="question-text">&ldquo;${q}&rdquo;</p>
+      </div>
+      <div class="header-empty"></div>
+      <div class="main-image-col">
+        <div class="${imgFrameClass}">${img}</div>
+        <div class="image-caption">${cap}</div>
+      </div>
+      <div class="main-right-col">
+        <div class="right-top">
+          <div class="right-top-arrow"><span class="arrow-down">&#x2193;</span></div>
+          <div class="right-top-answer">${a}</div>
         </div>
-      `;
-    }
+        <div class="right-bottom">
+          <p class="question-text">${data.bottomRight ? escapeHtml(data.bottomRight) : '&ldquo;' + q + '&rdquo;'}</p>
+        </div>
+      </div>
+      <div class="footer-answer ${data.footerImage ? 'has-footer-image' : ''}">
+        <div class="footer-text">${data.answerBottom ? escapeHtml(data.answerBottom) : a}</div>
+        ${data.footerImage ? `
+          <div class="footer-image-col">
+            <div class="image-frame">
+              <img src="${escapeHtml(data.footerImage)}" alt=""
+                ${data.footerVideo ? `style="cursor:pointer;" onclick="openVideo('${data.footerVideo}')"` : ''} />
+            </div>
+          </div>
+        ` : ''}
+      </div>
+      <div class="footer-arrow"><span class="arrow-left">&#x2190;</span></div>
+    </div>
+  `;
+}
 
     document.getElementById("page").innerHTML =
       interviews.map(renderBlock).join("");

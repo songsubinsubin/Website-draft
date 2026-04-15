@@ -34,7 +34,7 @@
         <ul class="gallery-list">
           <li><a href="https://www.ocadu.ca/galleries/onsite-gallery" target="_blank" class="gallery-link">Onsite Gallery</a> — Lisa Smith, Senior Curator</li>
           <li><a href="https://www.and1357.com/" target="_blank" class="gallery-link">Atelier Next Door</a> — Nensi and Ewan, Gallery Owners</li>
-          <li><a href="https://www.gallery44.org/" target="_blank" class="gallery-link">Gallery 44</a> — Sameen Mahboubi</li>
+          <li><a href="https://www.gallery44.org/" target="_blank" class="gallery-link">Gallery 44</a> — Sameen Mahboubi, Curator</li>
         </ul>
       `,
     }
@@ -59,7 +59,7 @@
       : `IMAGE`;
     return `
       <div class="cb2">
-        <div class="cb2-sidebar"><span class="arrow-right">&#x279E;</span></div>
+         <div class="cb2-sidebar"><span class="arrow-right" onclick="goBack()">&#x279E;</span></div>
         <div class="cb2-row1">
           <div class="cb2-title"><p>${titleLines}</p></div>
           <div class="cb2-info">
@@ -123,3 +123,4 @@
   document.getElementById("page").innerHTML =
     interviews.map(renderBlock).join("");
 </script>
+ <script src="script.js"></script>
