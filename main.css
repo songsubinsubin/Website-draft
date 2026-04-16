@@ -115,20 +115,15 @@ url(http://127.0.0.1:5501/image/mainpageimage.png)  border-right: var(--border);
 }
 .cb2-sidebar .arrow-right {
   font-size: 36px;
-  color: rgb(0, 0, 0);
+  color: #FF2D9B;
   line-height:1;
-  transform:rotate(180deg);
   transition: transform 0.3s ease;
+}
 
-  background-color: rgb(255, 0, 217);
-  display: inline-block;
   
 
-}
-.cb2-sidebar:hover .arrow-right {
-  transform: rotate(180deg) translateX(6px);
- 
-}
+  
+
 
 
 
@@ -743,5 +738,87 @@ z-index:10;
   }
 
      
+
+    .hotspot-container {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+    .hotspot {
+      position: absolute;
+      font-family: 'Andale Mono', monospace;
+      font-size: 1.9 rem;
+      font-weight: 10;
+      color: #ff1493;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+    }
+    .hotspot-preview {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: white;
+      border: 2px solid #ff1493;
+      padding: 6px;
+    }
+    .hotspot-preview img {
+      width: 100%;
+      display: block;
+      transform: none;
+    }
+    .hotspot-preview p {
+      font-size: 0.7rem;
+      margin: 6px 0 0;
+      color: #111;
+    }
+    .hotspot:hover .hotspot-preview { display: block; }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: white;
+      padding: 16px;
+      max-width: 80vw;
+      max-height: 85vh;
+      position: relative;
+      border: 2px solid #ff1493;
+    }
+    .modal-box img {
+      max-width: 100%;
+      max-height: 75vh;
+      display: block;
+    }
+    .modal-box p {
+      font-size: 0.8rem;
+      margin: 10px 0 0;
+      color: #111;
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px; right: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ff1493;
+      background: none;
+      border: none;
+    }
+
  
 
