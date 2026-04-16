@@ -54,7 +54,7 @@ body {
 }
 .nav-links a.active { opacity: 1; }
 .nav-links a:hover {
-  color: #FF2D9B;
+  color: #ffffff;
   transition: color 0.2s;
 }
  
