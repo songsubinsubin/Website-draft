@@ -6,11 +6,169 @@
   <title>Space Archive — Main</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link href="./main.css" rel="stylesheet" />
+  <style>
+    .main-hero {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 36px);
+      overflow: hidden;
+      background: #ccc;
+    }
+
+    .main-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .main-hero-frame {
+      position: absolute;
+      inset: 12px;
+      border: 1.5px solid #FF2D9B;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .main-title {
+      position: absolute;
+      top: 48px;
+      left: 48px;
+      z-index: 3;
+    }
+    .main-title h1 {
+      font-family: 'Futura', 'Space Mono', monospace;
+      font-size: 70px;
+      font-weight: 700;
+      line-height: 1.0;
+      color: #FF2D9B;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .main-title p {
+      font-family: 'Futura', 'Space Mono', monospace;
+      font-size: 15px;
+      font-weight: 400;
+      color: #ffffff;
+      margin-top: 16px;
+      max-width: 280px;
+      line-height: 1.6;
+    }
+
+    /* ── 화살표 버튼 공통 ── */
+    .main-arrow-btn {
+      position: absolute;
+      z-index: 3;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .main-arrow-btn .arrow-svg {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-archive:hover .arrow-svg {
+      transform: translateX(-18px);
+
+    }
+
+    .btn-interview:hover .arrow-svg {
+      transform: translateX(18px);
+    }
+
   
+
+    .arrow-label,
+    .arrow-num {
+      font-family: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
+      font-size: clamp(16pt, 2.5vw, 30pt); /* responsive 폰트 */
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .main-arrow-btn:hover .arrow-label,
+    .main-arrow-btn:hover .arrow-num  { color: #FF2D9B; }
+    .main-arrow-btn:hover .arrow-stroke { stroke: #FF2D9B; }
+    .main-arrow-btn:hover .arrow-head  { fill: #FF2D9B; }
+
+    .arrow-stroke {
+      stroke: #ffffff;
+      transition: stroke 0.2s;
+    }
+    .arrow-head {
+      fill: #ffffff;
+      transition: fill 0.2s;
+    }
+
+    /* SVG responsive — 고정 px 대신 vw 기반 */
+    .arrow-svg {
+      width: clamp(200px, 30vw, 420px);
+      height: auto;
+    }
+
+    /* SPACE ARCHIVE: 좌측, 약간 아래로 */
+    .btn-archive {
+      left: clamp(24px, 4vw, 48px);
+      top: 40%;/* bottom 대신 top % 로 — 화면 크기 달라도 일정 */
+    }
+
+    /* INTERVIEW: 우측, 약간 아래로 */
+    .btn-interview {
+      right: clamp(24px, 4vw, 48px);
+      top: 40%;
+      align-items: flex-end;
+    }
+    .btn-interview .arrow-label { text-align: right; }
+
+    /* ── 모바일 ── */
+    @media (max-width: 700px) {
+     main-title {
+      top: 24px;
+      left:24px;
+     }
+     .main-title h1{
+      font-size:28px;
+     }
+     .main-title p {
+      font: size 12px;
+      max-width: 200px;
+
+     }
+     .btn-archive {
+      top:auto;
+      bottom: 360px;
+      left:38px;
+     }
+     .btn-interview {
+    top: auto;
+    bottom: 130px;
+    right: 60px;
+  }
+
+  .arrow-label,
+  .arrow-num { 
+    font-size: 13pt; 
+  }
+
+  .arrow-svg {
+    width: clamp(120px, 40vw, 220px);
+  }
+}
+
+
+ 
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
     <a href="main.html" class="nav-arrow">&#x279E;</a>
     <div class="nav-links">
@@ -21,42 +179,51 @@
     </div>
   </nav>
 
-
-  <!-- HERO -->
-  <div class="main-hero">s
-
-    <!-- ✏️ 배경 이미지 — src를 본인 이미지 경로로 바꾸세요 -->
+  <div class="main-hero">
+    
     <img class="main-hero-bg" src="image/mainpageimage.png" alt="Exhibition" />
-
-    <!-- 핑크 테두리 -->
     <div class="main-hero-frame"></div>
 
-    <!-- 좌상단 타이틀 -->
     <div class="main-title">
-      <!-- ✏️ 타이틀과 설명 텍스트 수정 -->
       <h1>Exhibition<br>Sketchbook</h1>
       <p>Exhibition sketchbook is an Archive and guide of exhibition planning.</p>
     </div>
 
-    <!-- 오른쪽 화살표 → ARCHIVE LANDING -->
-    <a href="archive-landing.html" class="main-arrow-btn btn-interview">
-      <span class="arrow-label">Interview</span>
-      <svg class="arrow-shape" width="380" height="200" viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- 화살표 몸통 -->
-        <rect x="0" y="72" width="300" height="56" fill="#0a0a0a"/>
-        <!-- 화살표 머리 -->
-        <polygon points="270,0 380,100 270,200" fill="#0a0a0a"/>
+    <!-- 1 SPACE ARCHIVE -->
+    <a href="landingpage-spacearchive.html" class="main-arrow-btn btn-archive">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:10px;">
+        <span class="arrow-num">1</span>
+        <span class="arrow-label">Space Archive</span>
+      </div>
+      <svg class="arrow-svg" viewBox="0 0 420 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline
+          class="arrow-stroke"
+          points="14,40 400,40 400,440"
+          stroke-width="14"
+          stroke-linejoin="miter"
+          stroke-miterlimit="15"
+          fill="none"
+        />
+        <polygon class="arrow-head" points="26,16 26,64 0,40" />
       </svg>
     </a>
 
-    <!-- 왼쪽 화살표 ← SPACE ARCHIVE -->
-    <a href="archive-landing 2(space archive).html" class="main-arrow-btn btn-archive">
-      <span class="arrow-label">Space Archive</span>
-      <svg class="arrow-shape" width="380" height="200" viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- 화살표 머리 (왼쪽) -->
-        <polygon points="110,0 0,100 110,200" fill="#0a0a0a"/>
-        <!-- 화살표 몸통 -->
-        <rect x="80" y="72" width="300" height="56" fill="#0a0a0a"/>
+    <!-- 2 INTERVIEW ARCHIVE -->
+    <a href="landingpage-interview.html" class="main-arrow-btn btn-interview">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:10px; justify-content:flex-end;">
+        <span class="arrow-label">Interview Archive</span>
+        <span class="arrow-num">2</span>
+      </div>
+      <svg class="arrow-svg" viewBox="0 0 420 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline
+          class="arrow-stroke"
+          points="20,440 20,40 406,40"
+          stroke-width="14"
+          stroke-linejoin="miter"
+          stroke-miterlimit="15"
+          fill="none"
+        />
+        <polygon class="arrow-head" points="" />
       </svg>
     </a>
 
