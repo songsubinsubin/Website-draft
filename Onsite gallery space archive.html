@@ -97,7 +97,6 @@
   </style>
 </head>
 <body>
-  
 
   <div class="modal-overlay" id="modal" onclick="closeModal()">
     <div class="modal-box" onclick="event.stopPropagation()">
@@ -108,13 +107,12 @@
   </div>
 
   <nav class="nav">
-     <a onclick="history.back()" class="nav-arrow" style="cursor:pointer">
+    <a onclick="history.back()" class="nav-arrow" style="cursor:pointer">
       <svg width="28" height="14" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="28" y1="7" x2="0" y2="7" stroke="currentColor" stroke-width="2"/>
         <polyline points="8,1 1,7 8,13" fill="none" stroke="currentColor" stroke-width="2"/>
       </svg>
     </a>
-    
     <div class="nav-links">
       <a href="main.html">Main</a>
       <a href="landingpage-interview.html">Interview</a>
@@ -123,21 +121,23 @@
     </div>
   </nav>
 
-  
-  <div class="page-wrapper">
-    <div class="content-box">
+  <div class="page-wrapper" style="height:calc(100vh - 36px); overflow:hidden;">
+    <div class="content-box" style="height:100%;">
+
+      <div class="sidebar-arrow">
+        <span class="arrow-right">&#x279E;</span>
+      </div>
 
       <div class="header-question" style="grid-column:2/4; border-right:none;">
         <p class="question-text">Space Archive</p>
       </div>
 
-      <!-- ✅ overflow:hidden 없음, padding:0만 유지 -->
-      <div style="grid-column:2/4; padding:0;">
+      <div style="grid-column:2/4; padding:0; overflow:hidden;">
         <div class="hotspot-container">
 
           <img src="image4/space archive- Onsite gallery.jpg" />
 
-          <!-- 숫자 1 -->
+          <!-- 1 -->
           <div class="hotspot" style="left:38%; top:64%;"
                onclick="openModal('image2/image 1.jpg', '1')">
             1
@@ -147,7 +147,7 @@
             </div>
           </div>
 
-          <!-- 숫자 2 -->
+          <!-- 2 -->
           <div class="hotspot" style="left:46%; top:28%;"
                onclick="openModal('image2/image 2-2.jpg', '2')">
             2
@@ -157,7 +157,7 @@
             </div>
           </div>
 
-          <!-- 숫자 3 -->
+          <!-- 3 -->
           <div class="hotspot" style="left:58%; top:20%;"
                onclick="openModal('image2/image 3.jpg', '3')">
             3
@@ -167,7 +167,7 @@
             </div>
           </div>
 
-          <!-- 숫자 4 -->
+          <!-- 4 -->
           <div class="hotspot" style="left:53%; top:55%;"
                onclick="openModal('image2/image 4.jpg', '4')">
             4
@@ -177,13 +177,13 @@
             </div>
           </div>
 
-          <!-- 숫자 5 -->
+          <!-- 5 -->
           <div class="hotspot" style="left:55%; top:77%;"
                onclick="openModal('image2/image 5.jpg', '5')">
             5
             <div class="hotspot-preview">
               <img src="image2/image 5.jpg" />
-              <p> 5</p>
+              <p>5</p>
             </div>
           </div>
 
